@@ -888,7 +888,7 @@ MonoBehaviour:
   groundCheck: {fileID: 951087369}
   moveSpeed: 1
   turnSmoothTime: 0.1
-  turnSmoothVelocity: 0
+  turnSmoothVelocity: 0.5
   cam: {fileID: 277459917}
   jumpForce: 5
 --- !u!1 &951087368
