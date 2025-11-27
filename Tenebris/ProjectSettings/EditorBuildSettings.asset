@@ -6,18 +6,6 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/Menu/MainMenu.unity
-    guid: 413591b864e662248908826fccefd544
-  - enabled: 0
-    path: Assets/Scenes/General.unity
-    guid: 843ca703b6dcbb747854ae1d0ba4bf59
-  - enabled: 1
-    path: Assets/Scenes/Scenarios/Scenario.unity
-    guid: f933330373bfcf94e87639ee3c5ea1e7
-  - enabled: 1
-    path: Assets/Scenes/Scenarios/Floor 1/Iluminacion_PostProcesado/Iluminacion_PostProcesado.unity
-    guid: 6df875e0d7a91d24096284419bbf8f9a
-  - enabled: 1
     path: Assets/Scenes/Programming/Player.unity
     guid: 6b62667e731bcc34e873848e92c4f52d
   m_configObjects:
