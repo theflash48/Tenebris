@@ -28,7 +28,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518805537118270230}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.06346076, y: 0.10311958, z: 0.006592698, w: 0.9926206}
+  m_LocalRotation: {x: -0.063561335, y: 0.086650714, z: 0.0055398005, w: 0.9941936}
   m_LocalPosition: {x: 0.25, y: 1.4467987, z: -2.3568559}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -232,9 +232,16 @@ GameObject:
   m_Component:
   - component: {fileID: 6370716102484094196}
   - component: {fileID: 5968948492709675777}
+  - component: {fileID: 2840754514878270278}
+  - component: {fileID: 4745186612172113052}
+  - component: {fileID: 3064005911844594314}
+  - component: {fileID: 8751822061379568784}
+  - component: {fileID: 3980820484396381884}
+  - component: {fileID: 8871325427832642766}
+  - component: {fileID: 3323649763955299376}
   m_Layer: 0
   m_Name: NewPlayer
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -268,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 9a887b8e9eff45b428fd4398e7f35993, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: d46c4cac12b080a408d9d70784a0576b, type: 3}
   m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -283,8 +290,8 @@ MonoBehaviour:
   m_ActionEvents:
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+      - m_Target: {fileID: 2840754514878270278}
+        m_TargetAssemblyTypeName: CharacterInputHandler, Assembly-CSharp
         m_MethodName: OnMove
         m_Mode: 0
         m_Arguments:
@@ -295,12 +302,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 88389ab7-2ec8-4de4-a61d-cd64b8f3005f
-    m_ActionName: 'Player/Move[/XInputControllerWindows/leftStick]'
+    m_ActionId: c3a55942-55f9-4b06-9c92-56ce587ad6f2
+    m_ActionName: Player/OnMove
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+      - m_Target: {fileID: 2840754514878270278}
+        m_TargetAssemblyTypeName: CharacterInputHandler, Assembly-CSharp
         m_MethodName: OnLook
         m_Mode: 0
         m_Arguments:
@@ -311,12 +318,12 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: 777000fb-7b2a-4ad5-9518-97bd92dde9d8
-    m_ActionName: 'Player/Look[/XInputControllerWindows/rightStick]'
+    m_ActionId: b10b205e-d3b2-4acd-8754-2ce353c8d522
+    m_ActionName: Player/OnLook
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: PlayerInputReader, Assembly-CSharp
+      - m_Target: {fileID: 2840754514878270278}
+        m_TargetAssemblyTypeName: CharacterInputHandler, Assembly-CSharp
         m_MethodName: OnJump
         m_Mode: 0
         m_Arguments:
@@ -327,17 +334,198 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-    m_ActionId: fb86692b-4547-4c0b-91a2-3c814b603c29
-    m_ActionName: 'Player/Jump[/XInputControllerWindows/buttonSouth]'
+    m_ActionId: 967e704f-b494-4c4c-aa2e-10cce10c3b4a
+    m_ActionName: Player/OnJump
   - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: eaf40738-85ee-4cae-b4ff-59577e87cf4d
-    m_ActionName: 'Player/Crouch[/XInputControllerWindows/leftStickPress]'
+      m_Calls:
+      - m_Target: {fileID: 2840754514878270278}
+        m_TargetAssemblyTypeName: CharacterInputHandler, Assembly-CSharp
+        m_MethodName: OnCrouch
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: ea444ad1-2d8c-4948-a405-48b449d7d33f
+    m_ActionName: Player/Crouch
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2840754514878270278}
+        m_TargetAssemblyTypeName: CharacterInputHandler, Assembly-CSharp
+        m_MethodName: OnFastAttack
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 601ea546-6864-4988-b9f8-f4aa096e2e6e
+    m_ActionName: 'Player/FastAttack[/XInputControllerWindows/rightShoulder]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2840754514878270278}
+        m_TargetAssemblyTypeName: CharacterInputHandler, Assembly-CSharp
+        m_MethodName: OnSelectEnemy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 80b56d18-5f17-40ec-9b22-493e531aeae3
+    m_ActionName: 'Player/SpecialAttack[/XInputControllerWindows/rightTrigger]'
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 2840754514878270278}
+        m_TargetAssemblyTypeName: CharacterInputHandler, Assembly-CSharp
+        m_MethodName: OnSelectEnemy
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 48a68765-4347-4542-9ba6-f6fe2ba4efe8
+    m_ActionName: 'Player/SelectEnemy[/XInputControllerWindows/rightStickPress]'
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &2840754514878270278
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226137193131904907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e995fef507b79294cabc9f65d77f08a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CharacterInputHandler
+--- !u!136 &4745186612172113052
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226137193131904907}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.3
+  m_Height: 1.8
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.9, z: 0}
+--- !u!114 &3064005911844594314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226137193131904907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264190640dc66a5438868e3103869f67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::KinematicMover
+  capsule: {fileID: 4745186612172113052}
+  stats: {fileID: 11400000, guid: 9415c8bc2244ee34c89100e479e7e8df, type: 2}
+--- !u!114 &8751822061379568784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226137193131904907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6a9378833a31e34ea04389957da4027, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CapsuleResizer
+  capsule: {fileID: 4745186612172113052}
+  stats: {fileID: 11400000, guid: 9415c8bc2244ee34c89100e479e7e8df, type: 2}
+--- !u!114 &3980820484396381884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226137193131904907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f7dc79f085c75499a2f54bbf201cea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::ThirdPersonMotor
+  input: {fileID: 2840754514878270278}
+  cameraTransform: {fileID: 0}
+  stats: {fileID: 11400000, guid: 9415c8bc2244ee34c89100e479e7e8df, type: 2}
+  mover: {fileID: 3064005911844594314}
+  resizer: {fileID: 8751822061379568784}
+  velocity: {x: 0, y: 0, z: 0}
+--- !u!114 &8871325427832642766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226137193131904907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2331bb1154319674ea79e046012bc80e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MotorGizmos
+  mover: {fileID: 3064005911844594314}
+  motor: {fileID: 3980820484396381884}
+  capsule: {fileID: 4745186612172113052}
+  stats: {fileID: 0}
+  drawCapsule: 1
+  drawVelocity: 1
+  drawGroundProbe: 1
+  drawGroundNormal: 1
+  drawWallHit: 1
+  drawStepInfo: 1
+  drawSnapDown: 1
+  velocityScale: 0.25
+  normalScale: 0.5
+--- !u!114 &3323649763955299376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5226137193131904907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2a66d39ff2341b40b08a285f7916d8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MotorDebugOverlay
+  mover: {fileID: 3064005911844594314}
+  motor: {fileID: 3980820484396381884}
+  show: 1
 --- !u!1001 &2351100157205306632
 PrefabInstance:
   m_ObjectHideFlags: 0

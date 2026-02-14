@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb5767efa0e626d49afa5e6c96c3e975, type: 3}
+  m_Name: Player_version00
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerStats
+  movement:
+    maxSpeed: 4.5
+    acceleration: 25
+    deceleration: 30
+    airControl: 0.35
+    crouchSpeedMultiplier: 0.6
+  gravity:
+    gravity: 9.81
+    massKg: 70
+    terminalSpeed: 55
+  jump:
+    jumpHeight: 1.2
+    coyoteTime: 0.12
+    bufferTime: 0.12
+  collision:
+    collisionMask:
+      serializedVersion: 2
+      m_Bits: 9
+    skinWidth: 0.02
+    maxSlopeAngle: 55
+    groundProbeDistance: 0.25
+    groundSnapDistance: 0.2
+    stepHeight: 0.3
+    maxSnapDownSpeed: 10
+    stationarySnapDownDistance: 0.08
+    maxDepenetrationDistance: 0.15
+    maxBounces: 5
+    maxDepenetrationIterations: 4
+    enableRigidbodyPush: 0
+    pushMultiplier: 1
+  standing:
+    height: 1.8
+    radius: 0.3
+    center: {x: 0, y: 0.9, z: 0}
+  crouching:
+    height: 1.2
+    radius: 0.3
+    center: {x: 0, y: 0.6, z: 0}
