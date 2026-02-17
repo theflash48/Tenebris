@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public abstract class Enemy_IdleState : EnemyState
+public class Enemy_IdleState : EnemyState
 {
     public Enemy_IdleState(Enemy enemy, StateMachine stateMachine, string animBoolName) : base(enemy, stateMachine, animBoolName)
     {
@@ -17,10 +17,17 @@ public abstract class Enemy_IdleState : EnemyState
     public override void Update()
     {
         base.Update();
-        //Funcion Para cambiar de estado
-        /*
+
+        if (enemy.CanSeePlayer())
+        {
+            stateMachine.ChangeState(enemy.chaseState);
+            return; 
+        }
+
         if (stateTimer < 0f)
-            stateMachine.ChangeState();*/
+        {
+            stateMachine.ChangeState(enemy.patrolState);
+        }
     }
     public override void Exit()
     {

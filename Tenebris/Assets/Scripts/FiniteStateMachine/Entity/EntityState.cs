@@ -19,7 +19,10 @@ public abstract class EntityState
 
     public virtual void Enter()
     {
-        anim.SetBool(animBoolName, true);
+        if (anim != null)
+        {
+            anim.SetBool(animBoolName, true);
+        }
         triggerCalled = false;
     }
 
@@ -31,7 +34,10 @@ public abstract class EntityState
 
     public virtual void Exit()
     {
-        anim.SetBool(animBoolName, false);
+        if (anim != null)
+        {
+            anim.SetBool(animBoolName, false);
+        }
     }
 
     public void CallAnimationTrigger()

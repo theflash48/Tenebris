@@ -43,7 +43,7 @@ public class Entity : MonoBehaviour
         stateMachine.UpdateActiveState();
     }
 
-    public void SetVelocity(float xVelocity, float yVelocity)
+    public virtual void SetVelocity(float xVelocity, float yVelocity)
     {
         Vector3 inputDirection = new Vector3(xVelocity, 0f, yVelocity);
 
