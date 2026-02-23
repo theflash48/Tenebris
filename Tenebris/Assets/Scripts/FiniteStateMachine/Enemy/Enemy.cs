@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class Enemy : Entity
+public class Enemy : Entity, IHear
 {
     [Header("NavMesh & Movement")]
     public NavMeshAgent agent { get; private set; }
@@ -19,6 +19,9 @@ public class Enemy : Entity
     public float attackRange = 2f;
     public float attackCooldown = 1.5f;
 
+    [Header("Hearing Settings")]
+    public float immediateChaseRadius = 3f;
+
     // References
     public Transform player { get; private set; }
 
@@ -26,7 +29,8 @@ public class Enemy : Entity
     public Enemy_IdleState idleState { get; private set; }
     public Enemy_PatrolState patrolState { get; private set; }
     public Enemy_ChaseState chaseState { get; private set; }
-    // public Enemy_AttackState attackState { get; private set; }
+    
+    public Enemy_InvestigateState investigateState { get; private set; }
 
     protected override void Awake()
     {
@@ -40,6 +44,7 @@ public class Enemy : Entity
         idleState = new Enemy_IdleState(this, stateMachine, "Idle");
         patrolState = new Enemy_PatrolState(this, stateMachine, "Move");
         chaseState = new Enemy_ChaseState(this, stateMachine, "Chase");
+        investigateState = new Enemy_InvestigateState(this, stateMachine, "Investigate");
     }
 
     protected override void Start()
@@ -85,6 +90,28 @@ public class Enemy : Entity
         }
 
         return false;
+    }
+
+    public void OnHearSound(Vector3 soundOrigin, float soundRadius)
+    {
+        if (stateMachine.currentState == chaseState) return;
+
+        float distanceToSound = Vector3.Distance(transform.position, soundOrigin);
+
+        if (distanceToSound <= immediateChaseRadius)
+        {
+            stateMachine.ChangeState(chaseState);
+            return;
+        }
+
+        if (stateMachine.currentState == investigateState) return;
+
+        float randomErrorX = Random.Range(-2.5f, 2.5f);
+        float randomErrorZ = Random.Range(-2.5f, 2.5f);
+        Vector3 approximateLocation = new Vector3(soundOrigin.x + randomErrorX, soundOrigin.y, soundOrigin.z + randomErrorZ);
+
+        investigateState.SetTargetPosition(approximateLocation);
+        stateMachine.ChangeState(investigateState);
     }
 
     public bool IsPlayerInAttackRange()

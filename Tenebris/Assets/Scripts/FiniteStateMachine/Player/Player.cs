@@ -73,4 +73,26 @@ public class Player : Entity
         Vector3 moveVector2 = new Vector2(moveVector.x, moveVector.z);
         return moveVector2;
     }
+
+    // This method will be called by the player's attack or movement actions to alert nearby enemies.
+    public void AlertEnemies(float soundRadius)
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, soundRadius);
+
+        foreach (var collider in hitColliders)
+        {
+            IHear hearer = collider.GetComponent<IHear>();
+
+            if (hearer != null)
+            {
+                hearer.OnHearSound(transform.position, soundRadius);
+            }
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.color = Color.cyan;
+        Gizmos.DrawWireSphere(transform.position, 2f); 
+    }
 }
