@@ -1,0 +1,38 @@
+using System;
+using UnityEngine;
+
+public class InputManager : MonoBehaviour
+{
+    public static InputManager Instance { get; private set; }
+
+    public event EventHandler OnJumpPressed;
+
+    PlayerInputMap playerInputMap;
+
+    private void Awake()
+    {
+        if (Instance != null && Instance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            Instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+
+        playerInputMap = new PlayerInputMap();
+        playerInputMap.Enable();
+    }
+
+    //Player Input Getters
+    public Vector2 GetplayerMovement()
+    {
+        return playerInputMap.Player.Movement.ReadValue<Vector2>();
+    }
+
+    public bool GetJumpPressed()
+    {
+        return playerInputMap.Player.Jump.WasPressedThisFrame();
+    }
+}

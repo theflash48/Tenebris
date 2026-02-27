@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class Player : Entity
 {
-    public PlayerInputMap input {  get; private set; }
     public Player_IdleState idleState { get; private set; }
     public Player_MoveState moveState { get; private set; }
     public Player_JumpState jumpState { get; private set; }
@@ -20,7 +19,6 @@ public class Player : Entity
     protected override void Awake()
     {
         base.Awake();
-        input = new PlayerInputMap();
         idleState = new Player_IdleState(this, stateMachine, "Idle");
         moveState = new Player_MoveState(this, stateMachine, "Move");
         jumpState = new Player_JumpState(this, stateMachine, "jumpFall");
@@ -38,24 +36,18 @@ public class Player : Entity
         }
     }
 
-    private void OnEnable()
-    {
-        input.Enable();
-        input.Player.Movement.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
-        input.Player.Movement.canceled += ctx => moveInput = Vector2.zero;
-
-    }
-
     protected override void Update()
     {
         base.Update();
+        moveInput = InputManager.Instance.GetplayerMovement();
+
         Vector2 dir = new Vector2(moveInput.x, moveInput.y);
 
         if (dir.magnitude >= 0.1f)
         {
             float targetAngle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg;
             float angle = Mathf.SmoothDampAngle(transform.eulerAngles.y, targetAngle, ref turnSmoothVelocity, turnSmoothTime);
-            transform.rotation = Quaternion.Euler(0f, targetAngle, 0f);
+            transform.rotation = Quaternion.Euler(0f, angle, 0f);
         }
 
     }
