@@ -22,7 +22,16 @@ public class InputManager : MonoBehaviour
         }
 
         playerInputMap = new PlayerInputMap();
+    }
+
+    private void OnEnable()
+    {
         playerInputMap.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerInputMap.Disable();
     }
 
     //Player Input Getters
