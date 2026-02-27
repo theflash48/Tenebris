@@ -5,8 +5,6 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get; private set; }
 
-    public event EventHandler OnJumpPressed;
-
     PlayerInputMap playerInputMap;
 
     private void Awake()
