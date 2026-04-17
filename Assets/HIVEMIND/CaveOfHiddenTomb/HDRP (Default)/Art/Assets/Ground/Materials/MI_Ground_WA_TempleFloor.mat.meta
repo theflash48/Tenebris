@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 021637ce41a4e944396b71333e9b2e06
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 306634
+  packageName: Modular Cave (Ancient Cave, Ancient Ruins, Mayan Ruins, Cavern)
+  packageVersion: 1.0
+  assetPath: Assets/HIVEMIND/CaveOfHiddenTomb/HDRP (Default)/Art/Assets/Ground/Materials/MI_Ground_WA_TempleFloor.mat
+  uploadId: 725714
